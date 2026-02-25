@@ -1,17 +1,24 @@
-import matplotlib
-from flask import Flask
+# charts/generator.py
+
+import os
 import sqlite3
-import matplotlib.pyplot as plt
-from utils.paths import DB_PATH
-
-DB_PATH = "storage/honeypot_logs.db"
-
+import matplotlib
 matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
-app = Flask(__name__)
-app.secret_key = "super_secret_demo_key_2026"
+from utils.paths import DB_PATH, BASE_DIR
+
+
+def _ensure_static_folder():
+    static_dir = os.path.join(BASE_DIR, "static")
+    os.makedirs(static_dir, exist_ok=True)
+    return static_dir
+
 
 def generate_top_paths_chart():
+    static_dir = _ensure_static_folder()
+    output_path = os.path.join(static_dir, "top_paths.png")
+
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -35,12 +42,16 @@ def generate_top_paths_chart():
     plt.title("Top Targeted Endpoints")
     plt.xlabel("Endpoint")
     plt.ylabel("Hits")
+    plt.xticks(rotation=30)
     plt.tight_layout()
-    plt.savefig("static/top_paths.png")
+    plt.savefig(output_path)
     plt.close()
 
 
 def generate_top_ips_chart():
+    static_dir = _ensure_static_folder()
+    output_path = os.path.join(static_dir, "top_ips.png")
+
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -64,6 +75,7 @@ def generate_top_ips_chart():
     plt.title("Top Attacking IPs")
     plt.xlabel("IP Address")
     plt.ylabel("Hits")
+    plt.xticks(rotation=30)
     plt.tight_layout()
-    plt.savefig("static/top_ips.png")
+    plt.savefig(output_path)
     plt.close()
