@@ -6,11 +6,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from utils.paths import DB_PATH, BASE_DIR
+from flask import current_app
+from utils.paths import DB_PATH
 
 
 def _ensure_static_folder():
-    static_dir = os.path.join(BASE_DIR, "static")
+    static_dir = current_app.static_folder
     os.makedirs(static_dir, exist_ok=True)
     return static_dir
 
