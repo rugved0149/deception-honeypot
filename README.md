@@ -298,7 +298,7 @@ Planned improvements:
 
 ## 14. Author
 
-Rugved Suryawanshi,\n
+Rugved Suryawanshi
 Computer Science Engineering Student
 Focused on cybersecurity systems, defensive architecture, and behavioral threat modeling.
 
