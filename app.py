@@ -1,19 +1,22 @@
 # app.py
+
 import os
 from flask import Flask
+from storage.init_db import init_db
 
 app = Flask(__name__)
 
-# 🔐 REQUIRED for sessions (authentication will NOT work without this)
 app.config["SECRET_KEY"] = "super_secret_demo_key_2026"
 
-# Import blueprints AFTER app is created
+# Initialize database at startup
+init_db()
+
+# Import blueprints AFTER app + DB setup
 from auth.routes import auth_bp
 from honeypot.routes import honeypot_bp
 from dashboard.views import dashboard_bp
 from export.views import export_bp
 
-# Register blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(honeypot_bp)
 app.register_blueprint(dashboard_bp)
