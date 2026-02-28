@@ -1,9 +1,3 @@
-Good. I’ll give you a **deep, technically mature, recruiter-impressive README** — structured like a serious security project, not a classroom assignment.
-
-You can paste this directly into `README.md`.
-
----
-
 # 🛡 Deception-Based Intrusion Detection System
 
 ### Stealth Monitoring Honeypot with Adaptive Risk Scoring
