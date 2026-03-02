@@ -294,10 +294,10 @@ Planned improvements:
 
 Rugved Suryawanshi
 Computer Science Engineering Student
-Focused on cybersecurity systems, defensive architecture, and behavioral threat modeling.
 
 ---
 
 ## License
-
-This project is licensed under the MIT License – see the LICENSE file for details.
+© 2025 Rugved Suryawanshi.  
+This project is licensed under the MIT License.  
+Attribution is required in all copies or substantial portions of the Software.
